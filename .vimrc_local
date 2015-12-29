@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+" Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/ag'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -46,6 +47,9 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'ervandew/supertab'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Shougo/vimproc.vim' "make
+Plugin 'Quramy/tsuquyomi'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -103,3 +107,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='murmur'
 set laststatus=2
+
+"-------Tsuquyomi for typescript----------
+autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
