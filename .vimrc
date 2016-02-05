@@ -47,7 +47,21 @@ set encoding=utf-8
 "----------------------------------------------------------------------------------
 "  syntax, highlighting and spelling
 "----------------------------------------------------------------------------------
-" also see local file 
+" General autocomplete
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" open omni completion menu closing previous if open and opening new menu
+" without changing the text
+inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+  \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
+" open user completion menu closing previous if open and opening new menu
+" without changing the text
+inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
+  \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>' "
 
 syntax on
 filetype plugin indent on
@@ -136,7 +150,7 @@ set backspace=indent,eol,start
 set tabstop=2
 set shiftwidth=2
 set expandtab
-let g:indentLine_color_term = "black" 
+let g:indentLine_color_term = "grey" 
 set smartindent
 
 "-----Vim-easy-align

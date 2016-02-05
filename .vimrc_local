@@ -50,6 +50,7 @@ Plugin 'ervandew/supertab'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Shougo/vimproc.vim' "make
 Plugin 'Quramy/tsuquyomi'
+Plugin 'vim-scripts/AutoComplPop'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
