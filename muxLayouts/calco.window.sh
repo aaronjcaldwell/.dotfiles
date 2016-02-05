@@ -4,7 +4,7 @@
 
 # Create new window. If no argument is given, window name will be based on
 # layout file name.
-new_window "caldwell-contractor"
+new_window "calco"
 
 # Split window into panes.
 split_v 30
