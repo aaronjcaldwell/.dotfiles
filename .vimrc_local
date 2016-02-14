@@ -51,6 +51,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Shougo/vimproc.vim' "make
 Plugin 'Quramy/tsuquyomi'
 Plugin 'vim-scripts/AutoComplPop'
+Plugin 'lambdalisue/vim-unified-diff'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
