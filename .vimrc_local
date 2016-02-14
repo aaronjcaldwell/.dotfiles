@@ -52,6 +52,7 @@ Plugin 'Shougo/vimproc.vim' "make
 Plugin 'Quramy/tsuquyomi'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'lambdalisue/vim-unified-diff'
+Plugin 'ap/vim-css-color'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -88,7 +89,13 @@ filetype plugin indent on    " required
 "---------------------------------------------------------------------------------
 
 set t_Co=256
-colo PaperColor
+"-------Color settings
+if &diff
+  colo github
+else
+  colo PaperColor 
+endif
+
 
 "----------------------------------------------------------------------------------
 "  terminal

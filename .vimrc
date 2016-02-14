@@ -167,16 +167,12 @@ set fillchars+=stl:\ ,stlnc:\
 "  diff mode
 "----------------------------------------------------------------------------------
 
-"-------Color settings
-if &diff
-  colorscheme github
-endif
-
 "----VimDiff settings
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+"highlight DiffAdd cterm=none ctermfg=fg ctermbg=Blue gui=none guifg=fg guibg=Blue
+"highlight DiffDelete cterm=none ctermfg=fg ctermbg=Blue gui=none guifg=fg guibg=Blue
+"highlight DiffChange cterm=none ctermfg=fg ctermbg=Blue gui=none guifg=fg guibg=Blue
+"highlight DiffText cterm=none ctermfg=bg ctermbg=White gui=none guifg=bg guibg=White
+
 
 "----------------------------------------------------------------------------------
 "  mapping
