@@ -48,6 +48,8 @@ Plugin 'Quramy/tsuquyomi'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'lambdalisue/vim-unified-diff'
 Plugin 'ap/vim-css-color'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -249,7 +251,6 @@ set noswapfile
 
 "-------Airline settings-------------------
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
 
