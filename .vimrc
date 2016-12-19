@@ -2,13 +2,91 @@
 "  important
 "----------------------------------------------------------------------------------
 
-source ~/.vimrc_local
-"Contains:
-" * pathogen infect
-" * color
-" * terminal settings
-" * tmuxline
-" * airline settings
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'ervandew/ag'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'Yggdroot/indentLine'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'burnettk/vim-angular'
+Plugin 'Townk/vim-autoclose'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'vim-scripts/EasyMotion'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'pangloss/vim-javascript'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'airblade/vim-rooter'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ervandew/supertab'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Shougo/vimproc.vim' "make
+Plugin 'Quramy/tsuquyomi'
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'lambdalisue/vim-unified-diff'
+Plugin 'ap/vim-css-color'
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"---------------------------------------------------------------------------------
+"  syntax, highlighting and spelling
+"---------------------------------------------------------------------------------
+
+"----------------------------------------------------------------------------------
+"  terminal
+"----------------------------------------------------------------------------------
+
+"set t_Co=256
+"-------Color settings
+if &diff
+  colo github
+else
+  colo gruvbox 
+  set background=dark    " Setting dark mode for gruvbox "
+endif
+
+"----------------------------------------------------------------------------------
+"  various
+"----------------------------------------------------------------------------------
+
+"-------Tsuquyomi for typescript----------
+autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 "----------------------------------------------------------------------------------
 "  moving around, searching and patterns
@@ -47,53 +125,9 @@ set encoding=utf-8
 "----------------------------------------------------------------------------------
 "  syntax, highlighting and spelling
 "----------------------------------------------------------------------------------
-" General autocomplete
-set completeopt=longest,menuone
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-" open omni completion menu closing previous if open and opening new menu
-" without changing the text
-inoremap <expr> <C-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-  \ '<C-x><C-o><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>'
-" open user completion menu closing previous if open and opening new menu
-" without changing the text
-inoremap <expr> <S-Space> (pumvisible() ? (col('.') > 1 ? '<Esc>i<Right>' : '<Esc>i') : '') .
-  \ '<C-x><C-u><C-r>=pumvisible() ? "\<lt>C-n>\<lt>C-p>\<lt>Down>" : ""<CR>' "
 
 syntax on
 filetype plugin indent on
-
-autocmd BufEnter * :syntax sync fromstart
-
-"-------Eclim code completion
-let g:EclimCompletionMethod = 'omnifunc'
-inoremap fd <C-X><C-O>
-
-"-------UltiSnips
-set runtimepath+=~/.vim/my_snippets
-set runtimepath+=~/.vim/my_snippets/angular-vim-snippets
-" Trigger configuration. Do not use <tab> if you use
-let g:UltiSnipsExpandTrigger="<C-j>"                                                 
-let g:UltiSnipsJumpForwardTrigger="<C-l>"                                            
-let g:UltiSnipsJumpBackwardTrigger="<C-h>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories=['UltiSnips','html','javascript']
-
-"-------Syntastic
-"let g:syntastic_javascript_jshint_exec='/home/aaron/.npm-packages/bin/jshint'
-"let g:syntastic_html_jshint_exec='/home/aaron/.npm-packages/bin/jshint'
-let g:syntastic_html_checkers = ['jshint', 'validator', 'w3']
-let g:syntastic_mode_map = { "mode": "active",
-      \ "active_filetypes": ["html", "js", "gsp"],
-      \ "passive_filetypes": ["puppet"] }
-let g:syntastic_check_on_open = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_enable_balloons = 1
-let g:syntastic_filetype_map = { "gsp": "html"}
 
 "----------------------------------------------------------------------------------
 "  multiple windows
@@ -167,13 +201,6 @@ set fillchars+=stl:\ ,stlnc:\
 "  diff mode
 "----------------------------------------------------------------------------------
 
-"----VimDiff settings
-"highlight DiffAdd cterm=none ctermfg=fg ctermbg=Blue gui=none guifg=fg guibg=Blue
-"highlight DiffDelete cterm=none ctermfg=fg ctermbg=Blue gui=none guifg=fg guibg=Blue
-"highlight DiffChange cterm=none ctermfg=fg ctermbg=Blue gui=none guifg=fg guibg=Blue
-"highlight DiffText cterm=none ctermfg=bg ctermbg=White gui=none guifg=bg guibg=White
-
-
 "----------------------------------------------------------------------------------
 "  mapping
 "----------------------------------------------------------------------------------
@@ -211,12 +238,6 @@ set noswapfile
 "----------------------------------------------------------------------------------
 "  language specific
 "----------------------------------------------------------------------------------
-
-let javascript_enable_domhtmlcss=1
-let b:javascript_fold=1
-let g:javascript_conceal=1
-let g:javascript_ignore_javaScriptdoc=1
-let g:used_javascript_libs='angularjs,angularui,jasmine'
 
 "----------------------------------------------------------------------------------
 "  multi-byte characters
