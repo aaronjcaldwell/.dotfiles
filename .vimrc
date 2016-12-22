@@ -87,7 +87,6 @@ endif
 "----------------------------------------------------------------------------------
 "  various
 "----------------------------------------------------------------------------------
-
 "-------Tsuquyomi for typescript----------
 autocmd FileType typescript setlocal completeopt+=menu,preview
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
@@ -176,8 +175,7 @@ set nowrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
-hi ColorColumn guibg=#2d2d2d ctermbg=246
-let &colorcolumn=join(range(81,999),",")
+hi  colorcolumn ctermbg=0*
 set hidden
 set backspace=indent,eol,start
 
