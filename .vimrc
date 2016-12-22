@@ -7,6 +7,7 @@ filetype off                  " required
 
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/ocp-indent-vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/some/path/here')
@@ -122,7 +123,7 @@ autocmd FileType qf nmap <silent> <buffer> <cr> <cr>:ccl<cr>
 "  displaying text
 "----------------------------------------------------------------------------------
 
-set encoding=utf-8
+"set encoding=utf-8
 
 "----------------------------------------------------------------------------------
 "  syntax, highlighting and spelling
@@ -240,6 +241,12 @@ set noswapfile
 "----------------------------------------------------------------------------------
 "  language specific
 "----------------------------------------------------------------------------------
+
+"--Ocaml
+"Merlin
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+
 
 "----------------------------------------------------------------------------------
 "  multi-byte characters
