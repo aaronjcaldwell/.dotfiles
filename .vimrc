@@ -51,6 +51,7 @@ Plugin 'lambdalisue/vim-unified-diff'
 Plugin 'ap/vim-css-color'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'let-def/ocp-indent-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
