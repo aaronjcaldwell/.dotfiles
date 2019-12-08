@@ -21,7 +21,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ervandew/ag'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'morhetz/gruvbox'
 Plugin 'Yggdroot/indentLine'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -80,7 +79,7 @@ filetype plugin indent on    " required
 if &diff
   colo github
 else
-  colo gruvbox 
+  colo seti 
   set background=dark    " Setting dark mode for gruvbox "
 endif
 
